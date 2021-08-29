@@ -1,0 +1,14 @@
+<div class="profile">
+    <div *ngIf="!loggedIn()">
+        <a title="login" [routerLink]="['/login']">login</a> or <a class="top-bar__link" title="register"
+            [routerLink]="['/register']">register</a>
+    </div>
+
+    <ng-container *ngIf="data()">
+        <!-- <p class="profile__email">{{ data().email }}</p> -->
+        
+        <p class="profile__orders"><a title="orders" [routerLink]="['/orders']">orders</a></p>
+    </ng-container>
+
+    <button *ngIf="loggedIn()" (click)="logout()">Logout</button>
+</div>

@@ -1,0 +1,7 @@
+<nav class="nav">
+    <a class="nav__link" title="cars" [routerLink]="['/']">🚗</a>
+
+    <a class="nav__link" title="cart" [routerLink]="['/cart']">🛒<sup class="nav__cart-units" *ngIf="getCartCount()">({{ getCartCount() }})</sup></a>
+
+    <a class="nav__link" title="profile" [routerLink]="['/profile']">{{ data()? data().emoji : '👤' }}<sup class="nav__cart-units" *ngIf="data()">({{ data().name }})</sup></a>
+</nav>

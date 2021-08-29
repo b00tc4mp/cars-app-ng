@@ -1,0 +1,10 @@
+<form class="container register" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <input class="register__name" type="text" formControlName="name" placeholder="name">
+    <input class="register__emoji" type="text" formControlName="emoji" placeholder="emoji">
+    <input class="register__email" type="email" formControlName="email" placeholder="email">
+    <input class="register__password" type="password" formControlName="password" placeholder="password">
+    
+    <button class="register__submit">Register</button>
+
+    <p class="register__error" *ngIf="error">{{ error }}</p>
+</form>

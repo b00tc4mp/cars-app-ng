@@ -1,0 +1,26 @@
+<!-- [1] -->
+<app-search (queryEmitter)="onSubmit($event)" [query]="query()"></app-search> 
+
+<!-- [2] -->
+<!-- <app-search [submit]="onSubmit.bind(this)" [query]="query()"></app-search>  -->
+
+<!-- [3][4] -->
+<!-- <app-search [submit]="onSubmit" [query]="query()"></app-search>  -->
+
+<div class="container list">
+    <p *ngIf="list && list.length === 0">no results</p>
+
+    <p *ngIf="list && list.length > 0">{{ list.length }} {{ list.length === 1? 'result' : 'results' }}</p>
+
+    <ul class="list__items" *ngIf="list && list.length">
+        <li *ngFor="let item of list">
+            <a class="list__item-link" [title]="item.name" [routerLink]="['/products', item.id]">
+                <h3>{{ item.name }} ({{ item.id }})<sup class="list__cart-count" *ngIf="cartCount(item.id)">({{ cartCount(item.id) }})</sup></h3>
+                <img [src]="item.thumbnail">
+                <span>{{ item.price | currency }}</span>
+            </a>
+            
+            <button (click)="addToCart(item)">Add to cart</button>
+        </li>
+    </ul>
+</div>

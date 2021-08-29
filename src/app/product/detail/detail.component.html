@@ -1,0 +1,15 @@
+<div class="detail" *ngIf="item">
+    <h1>{{ item.name }} ({{ item.id }}) <sup class="detail__cart-count" *ngIf="getCartCount(item.id)">({{ getCartCount(item.id) }})</sup></h1>
+    
+    <img class="detail__image" img [src]="item.image">
+    
+    <div class="detail__color" [ngStyle]="{ 'background-color': item.color }" [title]="item.color">
+        {{ item.color === 'multi'? item.color : '' }}
+    </div>
+    
+    <p>{{ item.description }} See official product page <a [href]="item.url">here</a>.</p>
+
+    <p class="detail__price">{{ item.price | currency }}</p>
+
+    <button class="detail__add-to-cart" (click)="addToCart(item)">Add to cart</button>
+</div>

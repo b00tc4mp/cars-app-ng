@@ -1,0 +1,29 @@
+<div class="list">
+    <p *ngIf="!orders || !orders.length">no orders</p>
+
+    <p *ngIf="orders && orders.length > 0">{{ orders.length }} {{ orders.length === 1? 'order' : 'orders' }}</p>
+
+    <ul class="list__items" *ngIf="orders && orders.length">
+        <li class="list__item" *ngFor="let order of orders">
+            <a class="list__item-link" [title]="order.id" [routerLink]="['/orders', order.id === orderId? '' : order.id]">
+                <h2 class="list__item-id">{{ order.id }} <sup class="list__item-date">({{ order.formattedDate }})</sup></h2>
+            </a>
+
+            <div *ngIf="order.id === orderId">
+                <ul class="list__items" *ngIf="order.items && order.items.length">
+                    <li class="list__item" *ngFor="let item of order.items">
+                        <a class="list__item-link" [title]="item.name" [routerLink]="['/products', item.id]">
+                            <h3 class="list__item-title">{{ item.name }} ({{ item.id }})</h3>
+                            <img class="list__item-image" [src]="item.image">
+                            <span>{{ item.price | currency }} <sup class="item-count" *ngIf="item.count">({{
+                                    item.count }})</sup></span>
+                            <p class="list__item-total" *ngIf="item.total">({{ item.total | currency }})</p>
+                        </a>
+                    </li>
+                </ul>
+                <p class="list__total" *ngIf="order.total">Total {{ order.total | currency }}</p>
+            </div>
+
+        </li>
+    </ul>
+</div>

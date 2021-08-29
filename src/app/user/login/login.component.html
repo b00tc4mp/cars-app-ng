@@ -1,0 +1,8 @@
+<form class="container login" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <input class="login__email" type="email" formControlName="email" placeholder="email">
+    <input class="login__password" type="password" formControlName="password" placeholder="password">
+
+    <button class="login__submit">Login</button>
+
+    <p class="login__error" *ngIf="error">{{ error }}</p>
+</form>

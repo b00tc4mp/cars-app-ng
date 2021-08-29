@@ -1,0 +1,22 @@
+<div class="cart">
+    <p *ngIf="cart && !cart.count">no products</p>
+
+    <p *ngIf="cart && cart.count > 0">{{ cart.items.length }} {{ cart.items.length === 1? 'product' : 'products' }}</p>
+
+    <ul class="cart__items" *ngIf="cart.items && cart.items.length">
+        <li class="cart__item" *ngFor="let item of cart.items">
+            <a class="cart__item-link" [title]="item.name" [routerLink]="['/products', item.id]">
+                <h3 class="cart__item-title">{{ item.name }} ({{ item.id }})</h3>
+                <img class="cart__item-image" [src]="item.image">
+                <span>{{ item.price | currency }} <sup class="cart__item-count" *ngIf="item.count">({{ item.count }})</sup></span>
+                <p class="cart__item-total" *ngIf="item.total">({{ item.total | currency }})</p>
+            </a>
+            <button title="Add item" (click)="incrementItem(item.id)">+</button>
+            <button title="Remove item" (click)="decrementItem(item.id)">-</button>
+        </li>
+    </ul>
+
+    <p class="cart__total" *ngIf="cart.total">Total {{ cart.total | currency }}</p>
+
+    <button class="cart__place-order" title="Place order" *ngIf="cart.count" (click)="placeOrder()">Place order</button>
+</div>

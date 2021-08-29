@@ -1,0 +1,42 @@
+.detail
+    display: flex
+    flex-direction: column
+
+    &__image
+        min-width: 256px
+        max-width: 640px 
+        width: 100%
+
+    &__color
+        width: 35px
+        height: 35px
+        border-radius: 100%
+        border: 1px solid lightgray
+        display: flex
+        align-items: center
+        justify-content: center
+        font-size: .75rem
+
+
+    &__price
+        text-align: right
+
+    &__add-to-cart
+        margin-left: auto
+        font-size: 1rem
+        cursor: pointer
+        height: 3rem
+        // line-height: 2rem
+        font-size: 1rem
+        border: 1px solid lightgray
+        border-radius: 1rem
+        padding: 0 .75rem 0 .75rem
+        outline: none
+
+        &:focus
+            border: 2px solid dodgerblue
+
+    &__cart-count
+        color: dodgerblue
+        font-size: 1.5rem
+    
